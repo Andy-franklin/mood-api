@@ -1,0 +1,5 @@
+user:
+    resource: 'routes/user.yml'
+    prefix: /user
+
+

@@ -1,0 +1,19 @@
+App\Entity\User:
+    type: entity
+    table: user
+    id:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: IDENTITY
+    fields:
+        email:
+            type: string
+            unique: true
+        password:
+            type: string
+        authToken:
+            type: string
+        lastLogin:
+            type: datetime
