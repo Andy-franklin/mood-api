@@ -2,4 +2,7 @@ user:
     resource: 'routes/user.yml'
     prefix: /user
 
+weather:
+    resource: 'routes/weather.yml'
+    prefix: /weather
 

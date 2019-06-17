@@ -18,6 +18,11 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
 use Symfony\Component\Validator\Constraints\NotNull;
 
+/**
+ * Class UserController
+ *
+ * @package App\Controller
+ */
 class UserController extends AbstractController
 {
     /**
@@ -45,12 +50,23 @@ class UserController extends AbstractController
         $this->userHelper = $userHelper;
     }
 
-    public function authenticate()
+    /**
+     * If we have reached here then return a 200
+     * Error responses are sent from within LoginAuthenticator
+     * @return JsonResponse
+     */
+    public function authenticate(): JsonResponse
     {
-        return new JsonResponse($this->getUser()->getEmail());
+        return new JsonResponse(null, Response::HTTP_OK);
     }
 
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    /**
+     * @param Request                      $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     *
+     * @return JsonResponse
+     */
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): JsonResponse
     {
         /** @var User $user */
         $user = new User();
@@ -95,6 +111,11 @@ class UserController extends AbstractController
         return new JsonResponse($this->getErrorsFromForm($form));
     }
 
+    /**
+     * @param FormInterface $form
+     *
+     * @return array
+     */
     //TODO: extract to BaseApiController class
     private function getErrorsFromForm(FormInterface $form): array
     {

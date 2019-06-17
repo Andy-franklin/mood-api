@@ -1,0 +1,5 @@
+weather_report:
+    path: /report/{place}
+    controller: App\Controller\WeatherController::weatherReport
+    methods: [GET]
+
